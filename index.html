@@ -3286,32 +3286,41 @@ function drawTutorialPopup() {
 
 
     function drawPauseMenu() {
-  ctx.fillStyle = 'rgba(8, 17, 31, 0.78)';
-  ctx.fillRect(240, 110, 520, 180);
-  ctx.strokeStyle = '#60a5fa';
-  ctx.lineWidth = 3;
-  ctx.strokeRect(240, 110, 520, 180);
-  ctx.fillStyle = '#f8fafc';
-  ctx.font = 'bold 40px Arial';
-  ctx.textAlign = 'center';
-  ctx.fillText('PAUSED', W / 2, 160);
-  const labels = ['PLAY', 'RESTART'];
-  pauseButtons = [];
-  for (let i = 0; i < labels.length; i++) {
-    const bx = W / 2 - 120;
-    const by = 190 + i * 52;
-    const bw = 240, bh = 40;
-    pauseButtons.push({ x: bx, y: by, w: bw, h: bh, i });
-    ctx.fillStyle = i === pauseSelection ? '#22c55e' : 'rgba(15,23,42,0.92)';
-    ctx.fillRect(bx, by, bw, bh);
-    ctx.strokeStyle = i === pauseSelection ? '#bbf7d0' : '#93c5fd';
-    ctx.strokeRect(bx, by, bw, bh);
-    ctx.fillStyle = i === pauseSelection ? '#052e16' : '#e2e8f0';
-    ctx.font = 'bold 22px Arial';
-    ctx.fillText(labels[i], bx + bw / 2, by + 27);
-  }
-  ctx.textAlign = 'left';
-}
+      const panelX = 240;
+      const panelY = 120;
+      const panelW = 520;
+      const panelH = 160;
+
+      ctx.fillStyle = 'rgba(8, 17, 31, 0.78)';
+      ctx.fillRect(panelX, panelY, panelW, panelH);
+      ctx.strokeStyle = '#60a5fa';
+      ctx.lineWidth = 3;
+      ctx.strokeRect(panelX, panelY, panelW, panelH);
+
+      ctx.fillStyle = '#f8fafc';
+      ctx.font = 'bold 38px Arial';
+      ctx.textAlign = 'center';
+      ctx.fillText('PAUSED', W / 2, panelY + 50);
+
+      const labels = ['PLAY', 'RESTART'];
+      pauseButtons = [];
+      for (let i = 0; i < labels.length; i++) {
+        const bx = W / 2 - 120;
+        const by = panelY + 74 + i * 44;
+        const bw = 240;
+        const bh = 34;
+        pauseButtons.push({ x: bx, y: by, w: bw, h: bh, i });
+        ctx.fillStyle = i === pauseSelection ? '#22c55e' : 'rgba(15,23,42,0.92)';
+        ctx.fillRect(bx, by, bw, bh);
+        ctx.strokeStyle = i === pauseSelection ? '#bbf7d0' : '#93c5fd';
+        ctx.strokeRect(bx, by, bw, bh);
+        ctx.fillStyle = i === pauseSelection ? '#052e16' : '#e2e8f0';
+        ctx.font = 'bold 20px Arial';
+        ctx.fillText(labels[i], bx + bw / 2, by + 24);
+      }
+      ctx.textAlign = 'left';
+    }
+
 
     function drawWin() {
       ctx.fillStyle = 'rgba(10,30,20,0.88)';
