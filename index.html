@@ -41,7 +41,7 @@
     }
     canvas {
       width: 100%;
-      height: auto;
+      height: 100%;
       background: #08111f;
       display: block;
       position: relative;
@@ -3179,8 +3179,6 @@ function drawTutorialPopup() {
     }
 
     function drawHUD() {
-      ctx.fillStyle = 'rgba(0,0,0,0.22)';
-      ctx.fillRect(18, 16, 300, 144);
       ctx.fillStyle = '#f8fafc';
       ctx.font = 'bold 18px Arial';
       ctx.fillText(`Ammo: ${player.infiniteAmmo ? 'INF' : player.ammo}`, 30, 42);
