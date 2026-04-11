@@ -332,6 +332,7 @@
 
     const PLAYER_SIZE = 72;
     const PLAYER_START_X = 120;
+    const WORLD_Y_SQUASH = 0.75;
     const GRAVITY = 0.92;
     const JUMP_FORCE = -15.2;
     const JUMP_BOOST_BEATS = 10;
@@ -3361,6 +3362,11 @@ function drawTutorialPopup() {
       } else if (state === STATE_LEVEL_SELECT) {
         drawLevelSelectMenu();
       } else {
+        const squashedHeight = H * WORLD_Y_SQUASH;
+        const squashedOffsetY = (H - squashedHeight) / 2;
+        ctx.save();
+        ctx.translate(0, squashedOffsetY);
+        ctx.scale(1, WORLD_Y_SQUASH);
         drawBackground();
         drawGround();
         drawObstacles();
@@ -3372,6 +3378,7 @@ function drawTutorialPopup() {
         drawBullets();
         drawParticles();
         drawPlayer();
+        ctx.restore();
         if (state === STATE_RUN || state === STATE_DEAD || state === STATE_BOSS_DEFEAT) drawHUD();
         if (currentStage === STAGE_TUTORIAL && (state === STATE_RUN || state === STATE_DEAD || state === STATE_BOSS_DEFEAT)) drawTutorialPopup();
         if (state === STATE_MENU) drawMenu();
