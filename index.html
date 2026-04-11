@@ -331,6 +331,7 @@
     let BOSS_DISTANCE = LEVEL_CONFIGS[currentStage].bossBeat * PIXELS_PER_BEAT;
 
     const PLAYER_SIZE = 72;
+    const PLAYER_START_X = 120;
     const GRAVITY = 0.92;
     const JUMP_FORCE = -15.2;
     const JUMP_BOOST_BEATS = 10;
@@ -451,7 +452,7 @@
     let firstPowerPopupSeen = false;
 
     const player = {
-      x: 140,
+      x: PLAYER_START_X,
       y: GROUND - PLAYER_SIZE,
       size: PLAYER_SIZE,
       baseSize: PLAYER_SIZE,
@@ -1670,7 +1671,7 @@ function startStage(stage) {
   deathTimer = 0;
   deathBurst = null;
   speedupTriggered = false;
-  player.x = 140;
+  player.x = PLAYER_START_X;
   player.y = GROUND - PLAYER_SIZE;
   player.vy = 0;
   player.grounded = true;
